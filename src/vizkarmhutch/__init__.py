@@ -1,1 +1,1 @@
-#
+from style import (Style, MainColors, SpecialtyColors, AllColors)style_web = Style("web")style_pdf = Style("pdf")main_colors = MainColors()specialty_colors = SpecialtyColors()all_colors = AllColors()
