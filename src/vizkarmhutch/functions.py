@@ -25,7 +25,10 @@ def format_ticks(ax: plt.Axes, axis: str = 'y', hide: bool = False):
     
     axis_to_format = ax.yaxis if axis == 'y' else ax.xaxis
     
-    if hide: axis_to_format.set_visible(False)
+    if hide: 
+        # remove axis completely
+        axis_to_format.set_visible(False)
+        
     else:
         # add gridlines
         axis_to_format.grid(True)
