@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-from style import fig_width_inches
+
+from vizkarmhutch import Style
 
 
 def format_axes(ax: plt.Axes, keep_spine: str = "bottom"):
@@ -7,14 +8,15 @@ def format_axes(ax: plt.Axes, keep_spine: str = "bottom"):
     Make spines on the given Axes object invisible. It's most common 
     to keep the bottom spine, but user has flexibility to determine 
     which spine remains visible.
-    
+
     :param ax: the Axes object
     :param keep_spine: spine to keep visible (e.g. 'top', 'bottom', 'left', 'right')
     :return: None. Axes object modified in place.
     """
     spines = ['top', 'bottom', 'left', 'right']
     spines.remove(keep_spine)
-    for s in spines: ax.spines[s].set_visible(False)
+    for s in spines:
+        ax.spines[s].set_visible(False)
     
     
 def format_axis(ax: plt.Axes, axis: str = 'y', hide: bool = False):
@@ -41,18 +43,20 @@ def format_axis(ax: plt.Axes, axis: str = 'y', hide: bool = False):
 
 
 # function to generate figure
-def multi_axes_figure(left_margin: float = 0.04, 
-                      right_margin: float = 0.01, 
-                      top_margin: float = 0.07, 
-                      bottom_margin: float = 0.20, 
-                      num_rows: int = 2,
-                      num_cols: int = 2,
-                      space_btwn_axes_x: float = 0.05, 
-                      space_btwn_axes_y: float = 0.15, 
-                      aspect: float = 1.0):
+def generate_figure(style: Style,
+                    left_margin: float = 0.04,
+                    right_margin: float = 0.01,
+                    top_margin: float = 0.07,
+                    bottom_margin: float = 0.20,
+                    num_rows: int = 2,
+                    num_cols: int = 2,
+                    space_btwn_axes_x: float = 0.05,
+                    space_btwn_axes_y: float = 0.15,
+                    aspect: float = 1.0):
     """
     Generate a Figure that has the specified margins, aspect ratio, and number of Axes.
 
+    :param style: Style object with a fig_width_inches parameter
     :param left_margin: size of left margin (as a share of the Figure)
     :param right_margin: size of right margin (as a share of the Figure)
     :param top_margin: size of top margin (as a share of the Figure)
@@ -76,10 +80,10 @@ def multi_axes_figure(left_margin: float = 0.04,
     axes_height = (total_height - gap_space_y) / num_rows
     
     # generate figure with target width and given aspect ratio
-    fig = plt.figure(figsize=(fig_width_inches, fig_width_inches * aspect))
+    fig = plt.figure(figsize=(style.fig_width_inches, style.fig_width_inches * aspect))
     
     # add all Axes to figure 
-    axes = [] # convert this to a matrix for easier use later
+    axes = []  # convert this to a matrix for easier use later
     init_bottom = bottom_margin
     for _ in range(num_rows):
         
