@@ -1,5 +1,3 @@
-# matplotlib-viz-tool
-
 This [visualization tool](https://github.com/karmhutch/matplotlib-viz-tool) 
 was developed using Python v3.12.1 and Matplotlib v3.8.2. Its purpose is 
 to automate the styling of single- and multi-axes figures. 
