@@ -1,9 +1,8 @@
 # matplotlib-viz-tool change log
 
-### v0.0.0
-###### Jan 2, 2024
-- [Jira Ticket #1]()
-- [Pull Request #1]()
+### v0.1.0
+###### Jan 5, 2024
+- [Pull Request #1](https://github.com/karmhutch/matplotlib-viz-tool/pull/1)
   - add package documentation
   - add pyproject.toml to hold package/build specs
   - add style.py to automate styling
