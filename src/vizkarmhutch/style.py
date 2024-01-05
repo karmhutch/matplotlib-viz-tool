@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 from matplotlib.pyplot import rcParams
 
 
@@ -90,7 +87,7 @@ class FontColor(object):
             
     def get_color(self, element: str):
         getattr(self, element)
-            
+
             
 # define specs for text elements
 class FontSpecs(object):
