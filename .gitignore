@@ -1,1 +1,1 @@
-*.DS_Storebuild/dist/*.egg-info/*.egg*.py[cod]__pycache__/*.so*~
+# ignore testing and distribution filesdist/src/vizkarmhutch.egg-info/tests/mvt_env/# ignore IntelliJ files.idea# ignore MacOS files*.DS_Store
