@@ -3,6 +3,7 @@ dist/
 src/vizkarmhutch.egg-info/
 tests/
 mvt_env/
+update.sh
 
 # ignore IntelliJ files
 .idea
