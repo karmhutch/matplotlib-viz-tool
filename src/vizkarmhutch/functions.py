@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from style import fig_width_inches
 
 
-# functions to modify Axes 
 def format_axes(ax: plt.Axes, keep_spine: str = "bottom"):
     """
     Make spines on the given Axes object invisible. It's most common 
@@ -18,8 +17,16 @@ def format_axes(ax: plt.Axes, keep_spine: str = "bottom"):
     for s in spines: ax.spines[s].set_visible(False)
     
     
-def format_ticks(ax: plt.Axes, axis: str = 'y', hide: bool = False):
-    
+def format_axis(ax: plt.Axes, axis: str = 'y', hide: bool = False):
+    """
+    Formats the x- or y-axis of an Axes object. If not removing the axis
+    completely, then gridlines are added and the tick marks are hidden.
+
+    :param ax: the Axes object
+    :param axis: the axis to format; either 'x' or 'y'
+    :param hide: determines whether to hide the axis completely
+    :return: None. Axes object modified in place.
+    """
     axis_to_format = ax.yaxis if axis == 'y' else ax.xaxis
     
     if hide: 
@@ -42,8 +49,21 @@ def multi_axes_figure(left_margin: float = 0.04,
                       num_cols: int = 2,
                       space_btwn_axes_x: float = 0.05, 
                       space_btwn_axes_y: float = 0.15, 
-                      aspect: float = 1.0) -> (plt.Figure, plt.Axes):
-    
+                      aspect: float = 1.0):
+    """
+    Generate a Figure that has the specified margins, aspect ratio, and number of Axes.
+
+    :param left_margin: size of left margin (as a share of the Figure)
+    :param right_margin: size of right margin (as a share of the Figure)
+    :param top_margin: size of top margin (as a share of the Figure)
+    :param bottom_margin: size of bottom margin (as a share of the Figure)
+    :param num_rows: number of Axes along y-axis (e.g. 2 means there are 2 rows in each column)
+    :param num_cols: number of Axes along x-axis (e.g. 2 means there are 2 columns in each row)
+    :param space_btwn_axes_x: space between columns (as a share of the Figure)
+    :param space_btwn_axes_y: space between rows (as a share of the Figure)
+    :param aspect: ratio of figure height to figure width
+    :return: (plt.Figure, list of plt.Axes)
+    """
     # define width and height of all Axes combined
     total_width = 1 - left_margin - right_margin
     total_height = 1 - top_margin - bottom_margin
@@ -61,11 +81,11 @@ def multi_axes_figure(left_margin: float = 0.04,
     # add all Axes to figure 
     axes = [] # convert this to a matrix for easier use later
     init_bottom = bottom_margin
-    for r in range(num_rows):
+    for _ in range(num_rows):
         
         current_row = []
         init_left = left_margin
-        for c in range(num_cols):
+        for _ in range(num_cols):
             
             ax = fig.add_axes((init_left, init_bottom, axes_width, axes_height))
             current_row.append(ax)
@@ -75,12 +95,4 @@ def multi_axes_figure(left_margin: float = 0.04,
         init_bottom += (axes_height + space_btwn_axes_y)
         
     # return figure and list of axes
-    return (fig, axes)
-    
-            
-            
-        
-    
-    
-    
-    
+    return fig, axes
