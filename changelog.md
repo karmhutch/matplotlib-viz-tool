@@ -1,5 +1,10 @@
 # matplotlib-viz-tool change log
 
+### v1.0.0
+###### Jan 5, 2024
+- [Pull Request #3](https://github.com/karmhutch/matplotlib-viz-tool/pull/3)
+  - update package in TestPyPI and move code to main
+
 ### v0.2.0
 ###### Jan 5, 2024
 - [Pull Request #2](https://github.com/karmhutch/matplotlib-viz-tool/pull/2)

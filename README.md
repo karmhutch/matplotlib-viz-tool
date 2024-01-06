@@ -17,7 +17,7 @@ to automate the styling of single- and multi-axes figures.
 
 The package *vizkarmhutch* has been uploaded to TestPyPI, which is an instance 
 of PyPI (Python Package Index) used for testing. You can view the latest version
-[here](https://test.pypi.org/project/vizkarmhutch/0.2.0/). You can see how to use 
+[here](https://test.pypi.org/project/vizkarmhutch/1.0.0/). You can see how to use 
 the package in this [example](https://github.com/karmhutch/matplotlib-viz-tool/tree/main/examples). 
 **Note that this package requires Python v3.10 or greater**. 
 
