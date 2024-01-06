@@ -47,6 +47,9 @@ class FontSize(object):
     def items(self):
         return vars(self).items()
 
+    def get_size(self, element: str):
+        return getattr(self, element)
+
 
 # define weights of text elements
 class FontWeight(object):
@@ -97,21 +100,22 @@ class FontSpecs(object):
         assert medium in ('web', 'pdf')
 
         # initialize visualization elements
-        self.title: TextElement
-        self.subtitle: TextElement
-        self.axis_label: TextElement
-        self.tick_label: TextElement
-        self.data_label: TextElement
-        self.callout: TextElement
-        self.legend_label: TextElement
-        self.figure_note: TextElement
-        self.source_note: TextElement
+        sizes = FontSize(medium)
+        weights = FontWeight
+        colors = FontColor
 
-        for element, size in FontSize(medium).items():
-            weight: str = FontWeight.get_weight(element)
-            color: str = FontColor.get_color(element)
-            specs = TextElement(element, size, weight, color)
-            setattr(self, element, specs)
+        def get_text_element(elem: str):
+            return TextElement(elem, sizes.get_size(elem), weights.get_weight(elem), colors.get_color(elem))
+
+        self.title = get_text_element("title")
+        self.subtitle = get_text_element("subtitle")
+        self.axis_label = get_text_element("axis_label")
+        self.tick_label = get_text_element("tick_label")
+        self.data_label = get_text_element("data_label")
+        self.callout = get_text_element("callout")
+        self.legend_label = get_text_element("legend_label")
+        self.figure_note = get_text_element("figure_note")
+        self.source_note = get_text_element("source_note")
 
 
 # define object used to automate styling
@@ -122,7 +126,7 @@ class Style(FontSpecs):
 
         self.medium = medium
         self.font_name = "Times"
-        self.fig_width_pixels = 2140
+        self.fig_width_pixels = 1070
         self.fig_width_inches = self.fig_width_pixels / rcParams['figure.dpi']
 
     @property
@@ -165,8 +169,8 @@ class Color(object):
 
     def __init__(self, name: str, series: str, label: str):
         self.name = name
-        self.series = series
-        self.label = label
+        self.series = series  # plot element color (e.g. line, bar, etc.)
+        self.label = label    # in-text label color that is ADA complaint
 
     def __repr__(self):
         return f"Color(name={self.name}, series={self.series}, label={self.label}"

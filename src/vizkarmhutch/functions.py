@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from vizkarmhutch import Style
+from vizkarmhutch.style import Style
 
 
 def format_axes(ax: plt.Axes, keep_spine: str = "bottom"):
@@ -37,7 +37,7 @@ def format_axis(ax: plt.Axes, axis: str = 'y', hide: bool = False):
         
     else:
         # add gridlines
-        axis_to_format.grid(True)
+        axis_to_format.grid(True, zorder=0)
         # hide tick marks
         ax.tick_params(axis=axis, which='major', length=0)
 
