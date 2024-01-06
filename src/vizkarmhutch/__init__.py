@@ -1,1 +1,9 @@
-from style import (Style, MainColors, SpecialtyColors, AllColors)style_web = Style("web")style_pdf = Style("pdf")main_colors = MainColors()specialty_colors = SpecialtyColors()all_colors = AllColors()
+from . import style
+
+style_web = style.Style("web")
+style_pdf = style.Style("pdf")
+
+main_colors = style.MainColors()
+specialty_colors = style.SpecialtyColors()
+all_colors = style.AllColors()
+
