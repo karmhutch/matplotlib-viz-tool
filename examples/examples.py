@@ -7,6 +7,7 @@ from vizkarmhutch import (style_web as style, main_colors as colors)
 # Import helper functions
 from vizkarmhutch.functions import *
 
+# the following line imposes required style
 plt.rcParams.update(style.params)
 
 np.random.seed(42)

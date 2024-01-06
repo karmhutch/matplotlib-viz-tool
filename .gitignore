@@ -6,9 +6,6 @@ mvt_env/
 test_env/
 update.sh
 
-# ignore data file used for examples (it's too big)
-examples/Traffic_Violations.csv
-
 # ignore IntelliJ files
 .idea
 
