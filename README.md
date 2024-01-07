@@ -11,6 +11,10 @@ to automate the styling of single- and multi-axes figures.
 - src/**vizkarmhutch**
   - style.py
   - functions.py
+- **examples/**
+  - examples.py
+  - example_fig1.png  
+  - example_fig2.png  
 
 
 ### **Installation Instructions**
